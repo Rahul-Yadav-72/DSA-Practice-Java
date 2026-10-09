@@ -3,16 +3,13 @@ class Solution {
         Map<Integer,Integer> hm = new HashMap<>();
 
         for(int i=0; i<nums.length; i++){
-            if(!hm.containsKey(nums[i])){
-                hm.put(nums[i],i);
-            }else{
-                int idx = hm.get(nums[i]);
-                if(Math.abs(idx - i) <= k){
-                    return true;
-                }else{
-                    hm.put(nums[i],i);
-                }
+            if(hm.containsKey(nums[i])){
+               int idx = hm.get(nums[i]);
+               if(Math.abs(idx - i) <= k){
+                return true;
+               }
             }
+            hm.put(nums[i],i);
         }
         return false;
     }
